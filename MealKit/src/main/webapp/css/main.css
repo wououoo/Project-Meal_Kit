@@ -22,9 +22,9 @@ a {
 }
 
 header {
-  background-color: #6592fe;
+  background-color: #f9f5f0;
   /* background-color: yellow; */
-  border-bottom: 1px solid #c8c8c8;
+  border-bottom: 1px solid #D8BCB1;
   top: 0px;
   position: fixed;
   width: 100%;
@@ -39,7 +39,7 @@ header {
 
 header > .inner {
   height: 120px;
-  background-color: #6592fe;
+  background-color: #f9f5f0;
   /* background-color: orange; */
   z-index: 1;
 }
