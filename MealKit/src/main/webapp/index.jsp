@@ -69,11 +69,11 @@
     </main>
     
     <!-- 공통 footer 부분 -->
-		<%-- <%@ include file="footer.jsp" %> --%>
-		<footer>
+		<%@ include file="footer.jsp" %>
+		<!-- <footer>
         <p>주소: 회사 주소</p>
         <p>이메일: info@company.com</p>
         <p>전화번호: 123-456-7890</p>
-    </footer>
+    </footer> -->
 </body>
 </html>
