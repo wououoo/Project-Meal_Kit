@@ -71,12 +71,6 @@
                 </li>
               </ul>
             </div>
-            <div class="contents__texture">
-              <div class="inner">
-                <h4>재고 현황 설명</h4>
-                <p>설명 어쩌구저쩌구</p>
-              </div>
-            </div>
           </div>
         </li>
         <!-- 구매관리는 여기서 수정할 것 -->
@@ -120,12 +114,6 @@
                 </li>
               </ul>
             </div>
-            <div class="contents__texture">
-              <div class="inner">
-                <h4>구매관리 설명</h4>
-                <p>어쩌구저쩌구</p>
-              </div>
-            </div>
           </div>
         </li>
         
@@ -158,12 +146,6 @@
                   </ul>
                 </li>
               </ul>
-            </div>
-            <div class="contents__texture">
-              <div class="inner">
-                <h4>제조관리 설명</h4>
-                <p>설명 어쩌구저쩌구</p>
-              </div>
             </div>
           </div>
         </li>
@@ -198,12 +180,6 @@
                   </ul>
                 </li>
               </ul>
-            </div>
-            <div class="contents__texture">
-              <div class="inner">
-                <h4>판매관리 설명</h4>
-                <p>설명 어쩌구저쩌구</p>
-              </div>
             </div>
           </div>
         </li>
