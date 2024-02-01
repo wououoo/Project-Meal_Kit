@@ -45,10 +45,10 @@ header > .inner {
 
 header .inner .logo {
   position: absolute;
-  height: 75px;
-  top: 0px;
+  height: 20px;
+  top: -30px;
   bottom: 0px;
-  margin: auto 0;
+  
 }
 
 header .sub-menu {
