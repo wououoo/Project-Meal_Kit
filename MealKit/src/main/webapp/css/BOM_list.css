@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+/* 심신의 안정을 위해 해당 코드는 지우지 말 것 */
+
+body {
+	position: relative;
+}
+
+.main_wrap {
+	/* padding-top: 120px; */
+	padding-top: 160px;
+}
+
+/* 검색 아이콘 */
+.material-symbols-outlined {
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+}
+
+/* 검색 select의 css 속성 */
+/* #form-select-bg-size: 16px 12px; */

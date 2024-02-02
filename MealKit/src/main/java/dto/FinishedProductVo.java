@@ -2,11 +2,13 @@ package dto;
 
 public class FinishedProductVo {
 	private int product_id;
-	private String division;
+	private String product_nm;
+	private String product_specifications;
+	private String product_status;
 	private int product_quantity;
 	private int product_price;
 	private String storage_location;
-	private String product_name;
+	
 	
 	public int getProduct_id() {
 		return product_id;
@@ -14,11 +16,23 @@ public class FinishedProductVo {
 	public void setProduct_id(int product_id) {
 		this.product_id = product_id;
 	}
-	public String getDivision() {
-		return division;
+	public String getProduct_nm() {
+		return product_nm;
 	}
-	public void setDivision(String division) {
-		this.division = division;
+	public void setProduct_nm(String product_nm) {
+		this.product_nm = product_nm;
+	}
+	public String getProduct_specifications() {
+		return product_specifications;
+	}
+	public void setProduct_specifications(String product_specifications) {
+		this.product_specifications = product_specifications;
+	}
+	public String getProduct_status() {
+		return product_status;
+	}
+	public void setProduct_status(String product_status) {
+		this.product_status = product_status;
 	}
 	public int getProduct_quantity() {
 		return product_quantity;
@@ -38,12 +52,8 @@ public class FinishedProductVo {
 	public void setStorage_location(String storage_location) {
 		this.storage_location = storage_location;
 	}
-	public String getProduct_name() {
-		return product_name;
-	}
-	public void setProduct_name(String product_name) {
-		this.product_name = product_name;
-	}
+	
+	
 	
 	
 }

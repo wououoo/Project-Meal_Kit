@@ -4,7 +4,8 @@ public class BomVo {
 	private int bom_id;
 	private int product_id;
 	private int material_id;
-	private int material_quantity;
+	private int bom_prod_quantity;
+	private String quantity_units;
 	
 	
 	public int getBom_id() {
@@ -25,11 +26,17 @@ public class BomVo {
 	public void setMaterial_id(int material_id) {
 		this.material_id = material_id;
 	}
-	public int getMaterial_quantity() {
-		return material_quantity;
+	public int getBom_prod_quantity() {
+		return bom_prod_quantity;
 	}
-	public void setMaterial_quantity(int material_quantity) {
-		this.material_quantity = material_quantity;
+	public void setBom_prod_quantity(int bom_prod_quantity) {
+		this.bom_prod_quantity = bom_prod_quantity;
+	}
+	public String getQuantity_units() {
+		return quantity_units;
+	}
+	public void setQuantity_units(String quantity_units) {
+		this.quantity_units = quantity_units;
 	}
 	
 	
