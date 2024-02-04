@@ -4,7 +4,6 @@ public class FinishedProductVo {
 	private int product_id;
 	private String product_nm;
 	private String product_specifications;
-	private String product_status;
 	private int product_quantity;
 	private int product_price;
 	private String storage_location;
@@ -28,12 +27,6 @@ public class FinishedProductVo {
 	public void setProduct_specifications(String product_specifications) {
 		this.product_specifications = product_specifications;
 	}
-	public String getProduct_status() {
-		return product_status;
-	}
-	public void setProduct_status(String product_status) {
-		this.product_status = product_status;
-	}
 	public int getProduct_quantity() {
 		return product_quantity;
 	}
@@ -52,8 +45,5 @@ public class FinishedProductVo {
 	public void setStorage_location(String storage_location) {
 		this.storage_location = storage_location;
 	}
-	
-	
-	
 	
 }

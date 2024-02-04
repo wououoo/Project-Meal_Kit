@@ -1,23 +1,30 @@
 package dto;
 
 public class MaterialVo {
-	private int sup_id;
 	private int material_id;
+	private int sup_id;
+	private String material_nm;
 	private String material_classification;
 	private int material_quantity;
 	
 	
+	public int getMaterial_id() {
+		return material_id;
+	}
+	public void setMaterial_id(int material_id) {
+		this.material_id = material_id;
+	}
 	public int getSup_id() {
 		return sup_id;
 	}
 	public void setSup_id(int sup_id) {
 		this.sup_id = sup_id;
 	}
-	public int getMaterial_id() {
-		return material_id;
+	public String getMaterial_nm() {
+		return material_nm;
 	}
-	public void setMaterial_id(int material_id) {
-		this.material_id = material_id;
+	public void setMaterial_nm(String material_nm) {
+		this.material_nm = material_nm;
 	}
 	public String getMaterial_classification() {
 		return material_classification;
@@ -31,7 +38,6 @@ public class MaterialVo {
 	public void setMaterial_quantity(int material_quantity) {
 		this.material_quantity = material_quantity;
 	}
-	
 	
 	
 }
