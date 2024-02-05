@@ -43,6 +43,27 @@
         pstmt.setString(2, lotId);
         pstmt.executeUpdate();
         pstmt.close();
+        
+        String materialSql = "SELECT M.MATERIAL_ID, (PO.LOT_SIZE / 1000 * B.BOM_QUA) AS MATERIAL_TO_DEDUCT FROM MATERIAL M INNER JOIN BOM B ON M.MATERIAL_ID = B.MATERIAL_ID INNER JOIN PRODUCTION_ORDER PO ON B.PRODUCT_ID = PO.PRODUCT_ID WHERE PO.LOT_ID = ?";
+        pstmt = connection.prepareStatement(materialSql);
+        pstmt.setString(1, lotId);
+        rs = pstmt.executeQuery();
+
+        while (rs.next()) {
+            int materialId = rs.getInt("MATERIAL_ID");
+            int materialToDeduct = rs.getInt("MATERIAL_TO_DEDUCT");
+
+            // Deduct the materialToDeduct from MATERIAL table
+            String updateMaterialSql = "UPDATE MATERIAL SET MATERIAL_QUANTITY = MATERIAL_QUANTITY - ? WHERE MATERIAL_ID = ?";
+            PreparedStatement updatePstmt = connection.prepareStatement(updateMaterialSql);
+            updatePstmt.setInt(1, materialToDeduct);
+            updatePstmt.setInt(2, materialId);
+            updatePstmt.executeUpdate();
+            updatePstmt.close();
+        }
+        
+        rs.close();
+        pstmt.close();
 
         String sql = "DELETE FROM PRODUCTION_ORDER WHERE LOT_ID = ?";
         pstmt = connection.prepareStatement(sql);

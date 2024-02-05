@@ -104,13 +104,105 @@
 					<input type="hidden" name="lotId" value="<%= Lot_id %>"/>
 					<input type="hidden" name="output_<%= Lot_id %>" value="<%= Output %>" />
 					</form>
+
+	<%
+					}
+				} catch (Exception e) {
+					
+				}
+	%>	
+	</table>
+	</div>
+	</div>
+	<div class="fin_prod">
+		<div class="prod-container">
+			<div class="product">
+				<table>
+					<tr>
+						<th>제품번호</th>
+						<th>제품명</th>
+						<th>제품수량</th>
+						<th>재료현황</th>
+					</tr>
 					<%
+						try{
+							String prodSql = "SELECT PRODUCT_ID, PRODUCT_NAME, PRODUCT_QUANTITY FROM FINISHED_PRODUCT ORDER BY PRODUCT_ID ASC";
+							stmt = connection.createStatement();
+							rs = stmt.executeQuery(prodSql);
+							
+							while(rs.next()) {
+								int Product_id = rs.getInt("PRODUCT_ID");
+								String Product_name = rs.getString("PRODUCT_NAME");
+								int Product_quantity = rs.getInt("PRODUCT_QUANTITY");
+								%>
+								<tr>
+									<td><%= Product_id %></td>
+									<td><%= Product_name %></td>
+									<td><%= Product_quantity %></td>
+									<td>
+										<form action="manu_inst.jsp" method="post">
+											<input type="hidden" name="product_id" value="<%= Product_id %>" />
+											<input type="submit" value="더보기" />
+										</form>
+									</td>
+								</tr>
+								<%
+							}
+							rs.close();
+							stmt.close();
+						} catch(Exception e){
+							
 						}
-					} catch(Exception e){
-									
+					%>
+				</table>
+			</div>
+				<%
+					if (request.getParameter("product_id") != null) {
+						try{
+							int productId = Integer.parseInt(request.getParameter("product_id"));
+							String materialSql = "SELECT M.MATERIAL_ID, M.MATERIAL_NM, M.MATERIAL_QUANTITY, B.BOM_QUA, B.BOM_UNIT, CASE WHEN M.MATERIAL_QUANTITY >= B.BOM_QUA THEN '제조가능' ELSE '제조 불가능' END AS MANUFACTURING_AVAILABILITY FROM FINISHED_PRODUCT FP INNER JOIN BOM B ON FP.PRODUCT_ID = B.PRODUCT_ID INNER JOIN MATERIAL M ON B.MATERIAL_ID = M.MATERIAL_ID WHERE FP.PRODUCT_ID = ? ORDER BY M.MATERIAL_ID ASC";
+							PreparedStatement pstmt = connection.prepareStatement(materialSql);
+							pstmt.setInt(1, productId);
+							ResultSet materialRs = pstmt.executeQuery();
+							%>
+							<div class="material">
+								<table>
+									<tr>
+										<th>재료번호</th>
+										<th>재료명</th>
+										<th>재고수량</th>
+										<th>표준량</th>
+										<th>제조가능여부</th>
+									</tr>
+									<%
+										while(materialRs.next()) {
+											int Material_id = materialRs.getInt("MATERIAL_ID");
+											String Material_nm = materialRs.getString("MATERIAL_NM");
+											int Material_quantity = materialRs.getInt("MATERIAL_QUANTITY");
+											int Bom_qua = materialRs.getInt("BOM_QUA");
+											String Bom_unit = materialRs.getString("BOM_UNIT");
+											String manufacturingAvailability = materialRs.getString("MANUFACTURING_AVAILABILITY");
+											%>
+											<tr>
+												<td><%= Material_id %></td>
+												<td><%= Material_nm %></td>
+												<td><%= Material_quantity %> <%= Bom_unit %></td>
+												<td><%= Bom_qua %> <%= Bom_unit %></td>
+												<td><%= manufacturingAvailability %></td>
+												<td style="display: none;" data-material-quantity="<%= Material_quantity %>" data-bom-qua="<%= Bom_qua %>" data-material-nm="<%= Material_nm %>" data-bom-unit="<%= Bom_unit %>"></td>
+											</tr>
+											<%
+										}
+										materialRs.close();
+										pstmt.close();
+						}catch(Exception e){
+
+						}
 					}
 				%>
-	</table>
+								</table>
+							</div>
+		</div>
 	</div>
 	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
 	<script>
@@ -143,13 +235,30 @@
 	    	  e.preventDefault();
 	    	  return;
 	      }
+	      
+	      var allMaterialIsValid = true;
+	      $('.material tr').each(function(){
+	    	  var materialQuantity = parseInt($(this).find('td[data-material-quantity]').data('material-quantity'));
+	    	  var bomQua = parseInt($(this).find('td[data-bom-qua]').data('bom-qua'));
+	    	  var materialNM = $(this).find('td[data-material-nm]').data('material-nm');
+	    	  var bomUnit = $(this).find('td[data-bom-unit]').data('bom-unit');
+	    	  
+	    	  if (materialQuantity < (lotSize / 1000 * bomQua)) {
+	    		  alert(materialNM + '이(가) ' + ((lotSize / 1000 * bomQua) - materialQuantity) + bomUnit + ' 부족합니다.');
+	    		 	allMaterialIsValid = false;
+	    		 	return false;
+	    	  }
+	      });
+	      
+	      if (!allMaterialIsValid) {
+	    	  e.preventDefault();
+	    	  return;
+	      }
 				$('#complete_form_' + lotId).submit();
 			});
 		});
 	</script>
-	</div>
-	
-	<!-- ============================================================================== -->
+		<!-- ============================================================================== -->
 	
 	<!-- footer 공통 부분 연결 -->
 	<%@ include file="footer.jsp" %>
