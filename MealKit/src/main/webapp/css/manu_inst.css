@@ -19,7 +19,7 @@ body {
 	justify-content: center;
 	align-items: center;
 	padding-top: 50px;
-	padding-bottom: 50px;
+	padding-bottom: 0;
 }
 
 .subject p {
@@ -44,6 +44,41 @@ body {
 }
 
 .manufaturing .manu_table {
-	height: 550px;
+	height: 350px;
 	overflow: auto;
+}
+
+.fin_prod {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.fin_prod table {
+	position: relative;
+	border-collapse: collapse;
+	border: 1px solid black;
+	width: 100%;
+}
+
+.fin_prod th, .fin_prod td {
+	border-collapse: collapse;
+	border: 1px solid black;
+	text-align: center;
+	vertical-align: middle;
+	width: 130px;
+	height: 30px;
+}
+
+.fin_prod .prod-container .product, .fin_prod .prod-container .material {
+	height: 219px;
+	overflow: auto;
+}
+
+.fin_prod .prod-container {
+	display: flex;
+}
+
+.fin_prod .prod-container div {
+	margin: 20px;
 }
