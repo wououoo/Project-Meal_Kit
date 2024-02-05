@@ -1,8 +1,12 @@
+<%@page import="java.util.stream.Collectors"%>
+<%@page import="dto.MaterialVo"%>
+<%@page import="java.security.interfaces.RSAKey"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.*" %>
 <!-- DB와 연결 -->
+<%@ page import="utils.DBManager" %>
 <%@ page import = "java.sql.DriverManager" %>
 <%@ page import = "java.sql.Connection" %>
 <%@ page import = "java.sql.Statement" %>
@@ -10,13 +14,15 @@
 <%@ page import = "java.lang.Exception, java.sql.SQLException" %>
 
 <!DOCTYPE html>
+<!-- java 연결 -->
+<%@ page import = "dao.*" %>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>밀키트 관리 시스템</title>
-	 <!-- 부트스트랩 연결 -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<!-- 부트스트랩 연결 -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 	<!-- reset.css 연결 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css">
 	<!-- main.css 연결 -->
@@ -37,27 +43,13 @@
 	<!-- jQuery 연결 -->
 	<script defer src="./js/jquery-3.7.1.min.js"></script>
 	<script defer src="./js/main.js"></script>
+	<script defer src="./js/prod_select.js"></script>
 </head>
 <body>
 	<!-- header 공통 부분 연결 -->
 	<%@ include file="header.jsp" %>
 	
 	<!-- ============================================================================== -->
-	
-	<!-- BOM 현황 -->
-	<section>
-		<div class="main_wrap">
-			<div class="inner main_tit">
-				<h1>BOM 현황</h1>
-			</div>
-			<div class="inner prod_search">
-				<!-- 제품검색 tit & search 아이콘 -->
-				<div class="prod_search_tit">
-					<div>제품검색</div>
-					<div class="search">
-						<span class="material-symbols-outlined">
-							<!-- ★★★ # 에 검색 메소드 연결할 것 -->
-							<a href="#">Search</a>
 <%
 	/* JSP에서는 DB 연결하는 코드를 입력했으나, 
 	utils에 java 파일 만들었으니, 그것을 사용할 것 */
@@ -72,58 +64,190 @@
 				 alert('검색된 결과가 없습니다.');
 	*/
 	
+	// 완제품 객체 생성
+	Prod_select prod_s = new Prod_select();
+	List<String> prod_nms = prod_s.getProd_nm();
+	List<String> prod_divs = prod_s.getProd_div();
+	
+	// 자재(재료) 객체 생성
+	Material_select mat_s = new Material_select();
+	List<String> mat_nms = mat_s.getMat_nm();
 %>
-						</span>
-					</div>
+	<!-- BOM 현황 -->
+	<section>
+		<div class="main_wrap">
+			<div class="blank"></div>
+			<!-- 제품 검색 -->
+			<div class="inner search_container">
+				<div class="BOM_list_tit">
+					<h1>BOM 현황</h1>
 				</div>
-				<!-- 검색목록 및 입력칸 -->
-				<div class="inner search_input">
-					<!-- 제품명 & 제품규격(ex:2인) -->
-					<div class="prod_search_input">
-						<h3>제품명</h3>
-						<!-- 선택목록: 부트스트랩 - 셀렉트에서 가져옴 -->
-						<!-- ★★★ value에 검색값 링크할 것★★★ -->
-					  <!-- ★★★ DB에서 제품명, 제품규격, 재료명 가져오기 -->
-						<select class="form-select" aria-label="Default select example">
-						  <option selected>제품명 선택</option>
-						  <option value="#">DB에서 제품명 가져오기</option>
-						</select>
-						<h3>제품규격</h3>
-						<select class="form-select" aria-label="Default select example">
-						  <option selected>제품규격 선택</option>
-						  <option value="#">DB에서 제품규격 가져오기</option>
-						</select>
+				<div class="search_header">
+					<div class="search_header search_tit">
+						<div class="search_tit search_detail_tit">
+							제품검색
+						</div>
+						<div class="search_tit search">
+							<span class="material-symbols-outlined">
+								<!-- ★★★ # 에 검색 메소드 연결할 것 -->
+								<a href="#">Search</a>
+							</span>
+						</div>
 					</div>
-					<!-- 재료명 -->
-					<div class="mat_search_input">
-						<h3>재료명</h3>
-						<select class="form-select" aria-label="Default select example">
-						  <option selected>재료명 선택</option>
-						  <option value="#">DB에서 재료명 가져오기</option>
-						</select>
+					<div class="search_header search_body">
+						<div class="search_body prodNm_search">
+							<h3>제품명</h3>
+							<!-- ★★★ value에 검색값 링크할 것★★★ -->
+							<form class="select-prod_nm">
+								<select class="form-select" aria-label="Default select example">
+								  <option selected>제품명 선택</option>
+<% 
+	for(String prod_nm : prod_nms) {
+		
+%>
+									  <option value="<%= prod_nm %>">
+											<%= prod_nm %>
+										</option>
+<%
+	}
+%>						  	
+									</select>
+								</form>
+						</div>
+						<div class="search_body prodSpec_search">
+							<h3>제품규격</h3>
+							<form class="select-prod_div">
+									<select class="form-select" aria-label="Default select example" name="prod_div" id="prod_div" class="prod_div onchange="ch_prodDiv()">
+									  <option selected>제품규격 선택</option>
+<%
+	for(String prod_div : prod_divs) {
+
+%>
+									  <option value="<%= prod_div %>">
+									  	<%= prod_div %>
+									  </option>
+<%
+	}
+%>
+									</select>
+								</form>
+						</div>
+						<div class="search_body matNm_search">
+							<h3>재료명</h3>
+							<form class="select-mat_nm">
+								<select class="form-select" aria-label="Default select example">
+								  <option selected>재료명 선택</option>
+<%
+	for(String material_nm : mat_nms) {
+		
+%>
+								  <option value="<%= material_nm %>">
+								  	<%= material_nm %>
+<%
+	}
+%>
+							  	</option>
+								</select>
+							</form>
+						</div>
 					</div>
 				</div>
 			</div>
 			
-			<!-- BOM 목록 조회, 수정, 삭제 -->
-			<div class="inner BOM_list">
-				<!-- 삭제 버튼 -->
-				<div class="bom_delete">
-					<!-- ★★★ #에 삭제 메소드 링크할 것 -->
-					<a class="delete" href="#">삭제</a>
-				</div>
-				<!-- BOM 목록 -->
-				<div class="detail_list">
+			<!-- BOM 목록 -->
+			<div class="inner list_container">
+				<div class="inner BOM_list">
+					<div class="BOM_list bom_delete">
+						<!-- ★★★ #에 삭제 메소드 링크할 것 -->
+						<a href="#">
+							<button type="button" class="btn btn-secondary btn-sm btn-delete">삭제</button>
+						</a>
+					</div>
+					<div class="BOM_list list_box">
+						<table class="table">
+						  <thead class="table-dark">
+						    <tr>
+						    	<th>
+						    		<div class="form-check">
+										  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+										  <label class="form-check-label" for="flexCheckDefault"></label>
+										</div>
+						    	</th>
+						    	<th>#</th>
+						    	<th>BOM코드</th>
+						    	<th>제품코드</th>
+						    	<th>제품명</th>
+						    	<th>규격</th>
+						    	<th>LOT사이즈</th>
+						    	<th>구분</th>
+						    	<th>재료코드</th>
+						    	<th>재료명</th>
+						    	<th>단위</th>
+						    	<th>수량</th>
+						    	<th>수정</th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						  	<tr>
+						    	<th>
+						    		<div class="form-check">
+										  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+										  <label class="form-check-label" for="flexCheckDefault"></label>
+										</div>
+						    	</th>
+						    	<th>순서1</th>
+						    	<th>BOM코드1</th>
+						    	<th>제품코드1</th>
+						    	<th>된장찌개</th>
+						    	<th>2인</th>
+						    	<th>1000</th>
+						    	<th>원자재</th>
+						    	<th>재료코드1</th>
+						    	<th>양파</th>
+						    	<th>kg</th>
+						    	<th>10</th>
+						    	<th>
+						    		<!-- ★★★ #에 수정 메소드 링크할 것 -->
+										<a href="#">
+											<button type="button" class="btn btn-secondary btn-sm btn-update">수정</button>
+										</a>
+						    	</th>
+						    </tr>
+						  </tbody>
+						</table>
+					</div>
 					
+					<!-- 페이지 버튼 -->
+					<!-- #에 페이지 넘어가는 링크 연결할 것 -->
+					<div class="BOM_list page">
+						<nav aria-label="Page navigation example">
+						  <ul class="pagination">
+						    <li class="page-item">
+						      <a class="page-link" href="#" aria-label="Previous">
+						        <span aria-hidden="true">&laquo;</span>
+						      </a>
+						    </li>
+						    <li class="page-item"><a class="page-link" href="#">1</a></li>
+						    <li class="page-item"><a class="page-link" href="#">2</a></li>
+						    <li class="page-item"><a class="page-link" href="#">3</a></li>
+						    <li class="page-item">
+						      <a class="page-link" href="#" aria-label="Next">
+						        <span aria-hidden="true">&raquo;</span>
+						      </a>
+						    </li>
+						  </ul>
+						</nav>
+					</div>
 				</div>
 			</div>
-			
 		</div>
 	</section>
+	
 	
 	<!-- ============================================================================== -->
 	
 	<!-- footer 공통 부분 연결 -->
 	<%@ include file="footer.jsp" %>
+
 </body>
 </html>

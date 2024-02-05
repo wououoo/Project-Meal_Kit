@@ -8,50 +8,146 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.swing.plaf.synth.SynthOptionPaneUI;
+
 import dto.FinishedProductVo;
 import utils.DBManager;
 
 public class Prod_select {
 
 	public static void main(String[] args) {
-		// 실행내용
-		prod_nm();
+		Prod_select ps = new Prod_select();
+		// 제품명만 모두 조회
+		/* ps.getProd_nm(); */
+		// 제품 규격만 모두 조회
+		/* ps.getProd_div(); */
+		// 모든 컬럼 조회
+		ps.getProd_all();
 
 	}
 	
-	// 모든 제품명 조회 => 제품 검색을 위함
-	public static void prod_nm() {
+	// 모든 제품명 조회 => BOM 현황 검색에 사용
+	public List<String> getProd_nm() {
 		String sql = null;
+		String product_nm = null;
 		
 		PreparedStatement pstmt = null;
-		Statement stmt = null;
+		/* Statement stmt = null; */
 		ResultSet rs = null;
 		Connection conn = null;
 		
-		FinishedProductVo pVo = new FinishedProductVo();
+		/* FinishedProductVo pVo = new FinishedProductVo(); */
 		
+	    List<String> list = new ArrayList<>();
 		try {
-			/*
-			 * stmt = conn.createStatement(); // 2-1. Statement 생성 
-			 * rs = stmt.executeQuery("SELECT NUM, SUBJECT, HIT, REGDATE FROM BO_FREE WHERE SUBJECT LIKE '%" + searchText + "%' ORDER BY NUM DESC fetch first 5 rows only"); // 2-2. SQL 쿼리 실행
-			 */	
-			sql = "SELECT product_nm FROM Finished_Product";
+			/* sql = "SELECT DISTINCT product_nm FROM Finished_Product"; */
+			sql = "SELECT DISTINCT product_name FROM Finished_Product ORDER BY product_name";
 			
 			conn = DBManager.getConnection();		// DB 연결
 			System.out.println("오라클 접속 성공");
-			stmt = conn.createStatement();			// Statement 생성
-			rs = stmt.executeQuery(sql);			// SQL 쿼리 실행
 			
-			/* 
-			pstmt = conn.prepareStatement(sql);		// 쿼리문 실행
-			rs = pstmt.executeQuery();				// 쿼리문 결과 처리
-			*/			
+			pstmt = conn.prepareStatement(sql); 	// 쿼리문 실행 
+			rs = pstmt.executeQuery(sql);		// 쿼리문 결과 처리
+			
+			while(rs.next()) {
+				product_nm = rs.getString("product_name");
+				list.add(product_nm);		// List에 조회된 prod_nm을 넣어줌
+
+				/* System.out.println(product_nm); */
+			}
+			
 		} catch (Exception e) {
 			System.out.println("오라클 접속 오류: " + e);
 		}
 		DBManager.close(conn, pstmt, rs);		// DB 닫기
+		return list;
+	}
+	
+	// 모든 제품규격 조회 => BOM 현황 검색에 사용
+	public List<String> getProd_div() {
+		String sql = null;
+		String prod_div = null;
 		
+		PreparedStatement pstmt = null;
+		/* Statement stmt = null; */
+		ResultSet rs = null;
+		Connection conn = null;
 		
+		/* FinishedProductVo pVo = new FinishedProductVo(); */
+		
+	    List<String> list = new ArrayList<>();
+		try {
+			sql = "SELECT DISTINCT division FROM Finished_Product ORDER BY division";
+			
+			conn = DBManager.getConnection();		// DB 연결
+			System.out.println("오라클 접속 성공");
+			
+			pstmt = conn.prepareStatement(sql); 	// 쿼리문 실행 
+			rs = pstmt.executeQuery(sql);		// 쿼리문 결과 처리
+			
+			while(rs.next()) {
+				prod_div = rs.getString("division");
+				list.add(prod_div);		// List에 조회된 prod_div을 넣어줌
+
+				/* System.out.println(prod_div); */
+			}
+			
+		} catch (Exception e) {
+			System.out.println("오라클 접속 오류: " + e);
+		}
+		DBManager.close(conn, pstmt, rs);		// DB 닫기
+		return list;
+	}
+	
+	// 완제품 모든 컬럼 조회 => BOM 현황 검색에 사용
+	public List<String> getProd_all() {
+		String sql = null;
+		String prod_id, 
+				prod_nm, 
+				prod_quantity, 
+				prod_price,
+				prod_spec, 
+				storage_location = null;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Connection conn = null;
+		
+		List<String> list = new ArrayList<>();
+		FinishedProductVo pVo = null;
+		
+		try {
+			sql = "SELECT product_id, product_name, division, product_quantity, product_price, storage_location FROM Finished_Product ORDER BY product_name";
+			
+			conn = DBManager.getConnection();		// DB 연결
+			System.out.println("오라클 접속 성공");
+			
+			pstmt = conn.prepareStatement(sql); 	// 쿼리문 실행 
+			rs = pstmt.executeQuery(sql);		// 쿼리문 결과 처리
+			
+			while(rs.next()) {
+				pVo = new FinishedProductVo();
+				prod_id = Integer.toString(rs.getInt("product_id"));
+				prod_nm = rs.getString("product_name");
+				prod_quantity = Integer.toString(rs.getInt("product_quantity"));
+				prod_price = Integer.toString(rs.getInt("product_price"));
+				prod_spec = rs.getString("division");
+				storage_location = rs.getString("storage_location");
+				
+				// List에 조회된 컬럼을 넣어줌
+				list.add(prod_id);		
+				list.add(prod_nm);
+				list.add(prod_quantity);
+				list.add(prod_price);
+				list.add(prod_spec);
+				list.add(storage_location);
+				
+			}
+		} catch (Exception e) {
+			System.out.println("오라클 접속 오류: " + e);
+		}
+		DBManager.close(conn, pstmt, rs);		// DB 닫기
+		return list;
 	}
 
 }

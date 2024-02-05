@@ -6,9 +6,13 @@ body {
 	position: relative;
 }
 
+.blank {
+	height: 160px;
+}
+
 .main_wrap {
-	/* padding-top: 120px; */
-	padding-top: 160px;
+	/* padding-top: 160px; */
+	background-color: skyblue;
 }
 
 /* 검색 아이콘 */
@@ -20,5 +24,50 @@ body {
     'opsz' 24;
 }
 
-/* 검색 select의 css 속성 */
-/* #form-select-bg-size: 16px 12px; */
+.main_tit h1 {
+	font-size: 30px;
+	font-weight: 700;
+}
+
+.main_tit_header {
+	background-color: yellow;
+	width: 30%;
+}
+
+.prod_search_tit {
+	background-color: orange;
+	width: 30%;
+	margin: 3% 0;
+	float: right;
+	font-size: 18px;
+	font-weight: 600;
+	
+}
+
+.search_header {
+	background-color: white;
+	display: flex;
+	justify-content: space-between;
+}
+
+.search_tit {
+	background-color: gray;
+	
+}
+
+.search {
+	background-color: black;
+}
+
+.search_input {
+	background-color: yellow;
+	margin: 3% 0;
+}
+
+.prod_search_input h3 {
+	font-weight: 700;
+}
+
+.bom_delete {
+	background-color: orange;
+}
