@@ -32,7 +32,6 @@
 	
 	<!-- jQuery 연결 -->
 	<script defer src="./js/jquery-3.7.1.min.js"></script>
-	<script defer src="./js/main.js"></script>
 </head>
 <body>
 	<!-- header 공통 부분 연결 -->
@@ -65,6 +64,9 @@
 			<th class="p2">제품명</th>
 			<th class="p3">제품수량</th>
 		</tr>
+	</table>
+	<div class="view_table">
+		<table>
 		<%
 					try{
 						String sql = "SELECT PRODUCT_ID, PRODUCT_NAME, PRODUCT_QUANTITY FROM FINISHED_PRODUCT ORDER BY PRODUCT_ID ASC";
@@ -89,9 +91,11 @@
 						
 					}
 				%>	
-	</table>
+			</table>
+		</div>
 	</div>
 			<div class="lot_table">
+			<div>
 				<table>
 					<tr>
 					<th class="i1">Lot번호</th>
@@ -119,6 +123,9 @@
 						<td class="i10"></td>
 					</tr>
 				</form>
+				</table>
+				<div class="inst_table">
+					<table>
 				<%
 					try{
 						String sql = "SELECT I.LOT_ID, (SELECT E1.EMP_NM FROM EMPLOYEES E1 WHERE E1.EMP_ID = I.INST_ID) AS INST_NM, I.PRODUCT_ID, I.LOT_SIZE, I.OUTPUT, TO_CHAR(I.INST_DATE, 'YYYY/MM/DD') AS INST_DATE, TO_CHAR(I.MANU_DATE, 'YYYY/MM/DD') AS MANU_DATE, (SELECT E2.EMP_NM FROM EMPLOYEES E2 WHERE E2.EMP_ID = I.MANU_ID) AS MANU_NM, CASE WHEN EXISTS (SELECT M.LOT_ID FROM MANUFACTURING M WHERE M.LOT_ID = I.LOT_ID) THEN '미완료' ELSE '완료' END AS COMPLETION FROM INSTRUCTION I ORDER BY I.LOT_ID DESC";
@@ -157,6 +164,8 @@
 							}
 				%>
 				</table>
+				</div>
+				</div>
 			</div>
 			</div>
 			</div>

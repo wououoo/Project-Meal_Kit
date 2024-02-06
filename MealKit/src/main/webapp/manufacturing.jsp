@@ -32,7 +32,6 @@
 	
 	<!-- jQuery 연결 -->
 	<script defer src="./js/jquery-3.7.1.min.js"></script>
-	<script defer src="./js/main.js"></script>
 </head>
 <body>
 	<!-- header 공통 부분 연결 -->
@@ -60,16 +59,19 @@
 	<div class="manu_table">
 	<table>
 		<tr>
-			<th>Lot번호</th>
+			<th class="m1">Lot번호</th>
 			<th>지시자</th>
 			<th>제품번호</th>
 			<th>Lot Size</th>
-			<th>생산량</th>
+			<th class="m5">생산량</th>
 			<th>지시일</th>
-			<th>수행일</th>
-			<th>수행자</th>
-			<th>완료버튼</th>
+			<th class="m7">수행일</th>
+			<th class="m8">수행자</th>
+			<th class="m9">완료버튼</th>
 		</tr>
+		</table>
+		<div class="lot_table">
+		<table>
 		<%
 			try{
 				String sql = "SELECT M.LOT_ID, (SELECT E.EMP_NM FROM EMPLOYEES E WHERE E.EMP_ID = M.INST_ID) AS INST_NM, M.PRODUCT_ID, M.LOT_SIZE, M.OUTPUT, TO_CHAR(M.INST_DATE, 'YYYY/MM/DD') AS INST_DATE, M.MANU_DATE, M.MANU_ID FROM MANUFACTURING M ORDER BY M.LOT_ID ASC";
@@ -92,14 +94,14 @@
 						<td><%= Inst_nm %></td>
 						<td><%= Product_id %></td>
 						<td id="lotSize_<%= Lot_id %>"><%= Lot_size %></td>
-						<td>
+						<td class="m5">
 							<input class="inputField" type="number" name="output_<%= Lot_id %>" placeholder="생산량" />
 						</td>
 						<td id="instDate_<%= Lot_id %>"><%= Inst_date %></td>
-						<td>
+						<td class="m7">
 							<input class="inputField" type="date" name="manuDate_<%= Lot_id %>" />
 						</td>
-						<td>
+						<td class="m8">
 							<input class="inputField" type="text" name="manuId_<%= Lot_id %>" placeholder="수행자ID" />
 						</td>
 						<td>
@@ -119,16 +121,20 @@
 	</table>
 	</div>
 	</div>
+	</div>
 	<div class="fin_prod">
 		<div class="prod-container">
 			<div class="product">
 				<table>
 					<tr>
-						<th>제품번호</th>
+						<th class="p1">제품번호</th>
 						<th>제품명</th>
 						<th>제품수량</th>
-						<th>재료현황</th>
+						<th class="p2">재료현황</th>
 					</tr>
+				</table>
+				<div class="prod_table">
+				<table>
 					<%
 						try{
 							String prodSql = "SELECT PRODUCT_ID, PRODUCT_NAME, PRODUCT_QUANTITY FROM FINISHED_PRODUCT ORDER BY PRODUCT_ID ASC";
@@ -160,6 +166,7 @@
 						}
 					%>
 				</table>
+				</div>
 			</div>
 				<%
 					if (request.getParameter("product_id") != null) {
@@ -173,12 +180,15 @@
 							<div class="material">
 								<table>
 									<tr>
-										<th>재료번호</th>
+										<th class="p1">재료번호</th>
 										<th>재료명</th>
 										<th>재고수량</th>
 										<th>표준량</th>
-										<th>제조가능여부</th>
+										<th class="p2">제조가능여부</th>
 									</tr>
+									</table>
+									<div class="mate_table">
+									<table>
 									<%
 										while(materialRs.next()) {
 											int Material_id = materialRs.getInt("MATERIAL_ID");
@@ -205,8 +215,9 @@
 						}
 					}
 				%>
-								</table>
-							</div>
+					</table>
+				</div>
+			</div>
 		</div>
 	</div>
 	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
