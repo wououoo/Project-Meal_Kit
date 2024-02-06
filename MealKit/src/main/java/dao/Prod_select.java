@@ -41,7 +41,7 @@ public class Prod_select {
 	    List<String> list = new ArrayList<>();
 		try {
 			/* sql = "SELECT DISTINCT product_nm FROM Finished_Product"; */
-			sql = "SELECT DISTINCT product_name FROM Finished_Product ORDER BY product_name";
+			sql = "SELECT DISTINCT product_nm FROM Finished_Product ORDER BY product_name";
 			
 			conn = DBManager.getConnection();		// DB 연결
 			System.out.println("오라클 접속 성공");
@@ -77,7 +77,7 @@ public class Prod_select {
 		
 	    List<String> list = new ArrayList<>();
 		try {
-			sql = "SELECT DISTINCT division FROM Finished_Product ORDER BY division";
+			sql = "SELECT DISTINCT product_div FROM Finished_Product ORDER BY division";
 			
 			conn = DBManager.getConnection();		// DB 연결
 			System.out.println("오라클 접속 성공");
@@ -117,7 +117,7 @@ public class Prod_select {
 		FinishedProductVo pVo = null;
 		
 		try {
-			sql = "SELECT product_id, product_name, division, product_quantity, product_price, storage_location FROM Finished_Product ORDER BY product_name";
+			sql = "SELECT product_id, product_nm, product_div, product_spec, product_quantity, product_price FROM Finished_Product ORDER BY product_name";
 			
 			conn = DBManager.getConnection();		// DB 연결
 			System.out.println("오라클 접속 성공");

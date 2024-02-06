@@ -55,7 +55,7 @@ public class Material_select {
 	// 이건 List<MaterialVo>로 만들어서 Map 사용해서 하면 가능함(머리 아파서 다음에 시도하자)
 	public List<String> getMat_all() {
 		String sql = null;
-		String sup_id, material_id, material_nm, material_classification, material_quantity = null;
+		String material_id, material_nm, material_classification, material_quantity = null;
 
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -65,7 +65,7 @@ public class Material_select {
 		/* MaterialVo mVo = null; */
 
 		try {
-			sql = "SELECT material_id, sup_id, material_nm, material_quantity FROM material ORDER BY material_nm";
+			sql = "SELECT material_id, material_nm, material_quantity FROM material ORDER BY material_nm";
 
 			conn = DBManager.getConnection(); // DB 연결
 			System.out.println("오라클 접속 성공");
@@ -76,14 +76,12 @@ public class Material_select {
 			while (rs.next()) {
 				/* mVo = new MaterialVo(); */
 
-				sup_id = Integer.toString(rs.getInt("sup_id")); 
 				material_id = Integer.toString(rs.getInt("material_id")); 
 				material_nm = rs.getString("material_nm"); 
 				material_classification = rs.getString("material_classification"); 
 				material_quantity = Integer.toString(rs.getInt("material_quantity"));
 
 				// List에 조회된 컬럼을 넣어줌
-				list.add(sup_id);
 				list.add(material_id);
 				list.add(material_nm);
 				list.add(material_classification);

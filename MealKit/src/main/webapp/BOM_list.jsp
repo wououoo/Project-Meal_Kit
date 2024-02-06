@@ -27,8 +27,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css">
 	<!-- main.css 연결 -->
 	<link rel="stylesheet" href="./css/main.css" />
-	<!-- BOM_list.css 연결 -->
-	<link rel="stylesheet" href="./css/BOM_list.css" />
+	<!-- bomList.css 연결 -->
+	<link rel="stylesheet" href="./css/bomList.css" />
 	
 	<!-- google font & google material icon -->
   <!-- Google 나눔고딕 -->
@@ -117,7 +117,7 @@
 						<div class="search_body prodSpec_search">
 							<h3>제품규격</h3>
 							<form class="select-prod_div">
-								<select class="form-select" aria-label="Default select example" name="prod_div" id="prod_div" class="prod_div onchange="ch_prodDiv()">
+								<select class="form-select" aria-label="Default select example" name="prod_div" id="prod_div" class="prod_div" onchange="ch_prodDiv()">
 								  <option selected>제품규격 선택</option>
 <%
 	for(String prod_div : prod_divs) {
