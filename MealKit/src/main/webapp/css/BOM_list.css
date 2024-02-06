@@ -24,50 +24,13 @@ body {
     'opsz' 24;
 }
 
-.main_tit h1 {
+.BOM_list_tit h1 {
 	font-size: 30px;
 	font-weight: 700;
 }
 
-.main_tit_header {
-	background-color: yellow;
-	width: 30%;
-}
-
-.prod_search_tit {
-	background-color: orange;
-	width: 30%;
-	margin: 3% 0;
-	float: right;
-	font-size: 18px;
-	font-weight: 600;
-	
-}
-
 .search_header {
-	background-color: white;
-	display: flex;
-	justify-content: space-between;
-}
-
-.search_tit {
-	background-color: gray;
-	
-}
-
-.search {
-	background-color: black;
-}
-
-.search_input {
 	background-color: yellow;
-	margin: 3% 0;
-}
-
-.prod_search_input h3 {
-	font-weight: 700;
-}
-
-.bom_delete {
-	background-color: orange;
+	width: 30%;
+	float: right;
 }

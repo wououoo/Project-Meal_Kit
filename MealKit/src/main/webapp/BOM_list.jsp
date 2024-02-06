@@ -117,20 +117,20 @@
 						<div class="search_body prodSpec_search">
 							<h3>제품규격</h3>
 							<form class="select-prod_div">
-									<select class="form-select" aria-label="Default select example" name="prod_div" id="prod_div" class="prod_div onchange="ch_prodDiv()">
-									  <option selected>제품규격 선택</option>
+								<select class="form-select" aria-label="Default select example" name="prod_div" id="prod_div" class="prod_div onchange="ch_prodDiv()">
+								  <option selected>제품규격 선택</option>
 <%
 	for(String prod_div : prod_divs) {
 
 %>
-									  <option value="<%= prod_div %>">
-									  	<%= prod_div %>
-									  </option>
+								  <option value="<%= prod_div %>">
+								  	<%= prod_div %>
+								  </option>
 <%
 	}
 %>
-									</select>
-								</form>
+								</select>
+							</form>
 						</div>
 						<div class="search_body matNm_search">
 							<h3>재료명</h3>
