@@ -1,0 +1,117 @@
+@charset "UTF-8";
+
+/* 심신의 안정을 위해 해당 코드는 지우지 말 것 */
+
+body {
+	position: relative;
+}
+
+.subject {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 50px;
+	padding-bottom: 0;
+}
+
+.manufaturing {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-top: 50px;
+	padding-bottom: 0;
+}
+
+.subject p {
+	font-size: 32px;
+	font-weight: bold;
+}
+
+.manufaturing table {
+	position: relative;
+	border-collapse: collapse;
+	border: 1px solid black;
+	width: 100%;
+}
+
+.manufaturing th, .manufaturing td {
+	border-collapse: collapse;
+	border: 1px solid black;
+	text-align: center;
+	vertical-align: middle;
+	height: 30px;
+}
+
+.manufaturing .manu_container {
+	display: flex;
+}
+
+.manufaturing .manu_container div {
+	margin: 20px;
+}
+
+.manufaturing .manu_container .prod_table {
+	overflow: auto;
+	margin-left: 0;
+}
+
+.manufaturing .manu_container .prod_table .p1 {
+	width: 70px;
+}
+
+.manufaturing .manu_container .prod_table .p2 {
+	width: 100px;
+}
+
+.manufaturing .manu_container .prod_table .p3 {
+	width: 70px;
+}
+
+.manufaturing .manu_container .lot_table .i1 {
+	width: 100px;
+}
+
+.manufaturing .manu_container .lot_table .i2 {
+	width: 100px;
+}
+
+.manufaturing .manu_container .lot_table .i3 {
+	width: 100px;
+}
+
+.manufaturing .manu_container .lot_table .i4 {
+	width: 100px;
+}
+
+.manufaturing .manu_container .lot_table .i5 {
+	width: 70px;
+}
+
+.manufaturing .manu_container .lot_table .i6 {
+	width: 100px;
+}
+
+.manufaturing .manu_container .lot_table .i7 {
+	width: 100px;
+}
+
+.manufaturing .manu_container .lot_table .i8 {
+	width: 70px;
+}
+
+.manufaturing .manu_container .lot_table .i9 {
+	width: 70px;
+}
+
+.manufaturing .manu_container .lot_table .i10 {
+	width: 70px;
+}
+
+.manufaturing .manu_container .lot_table .inputField {
+	width: 100px;
+}
+
+.manufaturing .manu_container .lot_table {
+	height: 569px;
+	overflow: auto;
+}
