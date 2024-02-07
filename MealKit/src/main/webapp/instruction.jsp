@@ -69,13 +69,13 @@
 		<table>
 		<%
 					try{
-						String sql = "SELECT PRODUCT_ID, PRODUCT_NAME, PRODUCT_QUANTITY FROM FINISHED_PRODUCT ORDER BY PRODUCT_ID ASC";
+						String sql = "SELECT PRODUCT_ID, PRODUCT_NM, PRODUCT_QUANTITY FROM FINISHED_PRODUCT ORDER BY PRODUCT_ID ASC";
 						stmt = connection.createStatement();
 						rs = stmt.executeQuery(sql);
 			
 						while(rs.next()) {
 							int Product_id = rs.getInt("PRODUCT_ID");
-							String Product_name = rs.getString("PRODUCT_NAME");
+							String Product_name = rs.getString("PRODUCT_NM");
 							int Product_quantity = rs.getInt("PRODUCT_QUANTITY");
 							%>
 							<tr>

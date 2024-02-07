@@ -137,13 +137,13 @@
 				<table>
 					<%
 						try{
-							String prodSql = "SELECT PRODUCT_ID, PRODUCT_NAME, PRODUCT_QUANTITY FROM FINISHED_PRODUCT ORDER BY PRODUCT_ID ASC";
+							String prodSql = "SELECT PRODUCT_ID, PRODUCT_NM, PRODUCT_QUANTITY FROM FINISHED_PRODUCT ORDER BY PRODUCT_ID ASC";
 							stmt = connection.createStatement();
 							rs = stmt.executeQuery(prodSql);
 							
 							while(rs.next()) {
 								int Product_id = rs.getInt("PRODUCT_ID");
-								String Product_name = rs.getString("PRODUCT_NAME");
+								String Product_name = rs.getString("PRODUCT_NM");
 								int Product_quantity = rs.getInt("PRODUCT_QUANTITY");
 								%>
 								<tr>
@@ -172,7 +172,7 @@
 					if (request.getParameter("product_id") != null) {
 						try{
 							int productId = Integer.parseInt(request.getParameter("product_id"));
-							String materialSql = "SELECT M.MATERIAL_ID, M.MATERIAL_NM, M.MATERIAL_QUANTITY, B.BOM_QUA, B.BOM_UNIT, CASE WHEN M.MATERIAL_QUANTITY >= B.BOM_QUA THEN '제조가능' ELSE '제조 불가능' END AS MANUFACTURING_AVAILABILITY FROM FINISHED_PRODUCT FP INNER JOIN BOM B ON FP.PRODUCT_ID = B.PRODUCT_ID INNER JOIN MATERIAL M ON B.MATERIAL_ID = M.MATERIAL_ID WHERE FP.PRODUCT_ID = ? ORDER BY M.MATERIAL_ID ASC";
+							String materialSql = "SELECT M.MATERIAL_ID, M.MATERIAL_NM, M.MATERIAL_QUANTITY, B.BOM_PROD_QUANTITY, B.QUANTITY_UNITs, CASE WHEN M.MATERIAL_QUANTITY >= B.BOM_PROD_QUANTITY THEN '제조가능' ELSE '제조 불가능' END AS MANUFACTURING_AVAILABILITY FROM FINISHED_PRODUCT FP INNER JOIN BOM B ON FP.PRODUCT_ID = B.PRODUCT_ID INNER JOIN MATERIAL M ON B.MATERIAL_ID = M.MATERIAL_ID WHERE FP.PRODUCT_ID = ? ORDER BY M.MATERIAL_ID ASC";
 							PreparedStatement pstmt = connection.prepareStatement(materialSql);
 							pstmt.setInt(1, productId);
 							ResultSet materialRs = pstmt.executeQuery();
@@ -194,8 +194,8 @@
 											int Material_id = materialRs.getInt("MATERIAL_ID");
 											String Material_nm = materialRs.getString("MATERIAL_NM");
 											int Material_quantity = materialRs.getInt("MATERIAL_QUANTITY");
-											int Bom_qua = materialRs.getInt("BOM_QUA");
-											String Bom_unit = materialRs.getString("BOM_UNIT");
+											int Bom_qua = materialRs.getInt("BOM_PROD_QUANTITY");
+											String Bom_unit = materialRs.getString("QUANTITY_UNITS");
 											String manufacturingAvailability = materialRs.getString("MANUFACTURING_AVAILABILITY");
 											%>
 											<tr>
