@@ -1,3 +1,4 @@
+<%@page import="dto.BomListVo"%>
 <%@page import="java.util.stream.Collectors"%>
 <%@page import="dto.MaterialVo"%>
 <%@page import="java.security.interfaces.RSAKey"%>
@@ -42,8 +43,7 @@
   
 	<!-- jQuery 연결 -->
 	<script defer src="./js/jquery-3.7.1.min.js"></script>
-	<script defer src="./js/main.js"></script>
-	<script defer src="./js/prod_select.js"></script>
+	<script defer src="./js/readBom.js"></script>
 </head>
 <body>
 	<!-- header 공통 부분 연결 -->
@@ -115,10 +115,10 @@
 								</form>
 						</div>
 						<div class="search_body prodSpec_search">
-							<h3>제품규격</h3>
+							<h3>제품구분</h3>
 							<form class="select-prod_div">
 								<select class="form-select" aria-label="Default select example" name="prod_div" id="prod_div" class="prod_div" onchange="ch_prodDiv()">
-								  <option selected>제품규격 선택</option>
+								  <option selected>제품구분 선택</option>
 <%
 	for(String prod_div : prod_divs) {
 
@@ -177,6 +177,7 @@
 						    	<th>BOM코드</th>
 						    	<th>제품코드</th>
 						    	<th>제품명</th>
+						    	<th>종류</th>
 						    	<th>규격</th>
 						    	<th>LOT사이즈</th>
 						    	<th>구분</th>
@@ -187,6 +188,12 @@
 						    	<th>수정</th>
 						    </tr>
 						  </thead>
+<%
+//BOM 현황 객체 생성
+	BomDao bDao = new BomDao();
+	List<BomListVo> lists = bDao.selectBomAll();
+	for(BomListVo list : lists) {
+%>
 						  <tbody>
 						  	<tr>
 						    	<th>
@@ -195,17 +202,18 @@
 										  <label class="form-check-label" for="flexCheckDefault"></label>
 										</div>
 						    	</th>
-						    	<th>순서1</th>
-						    	<th>BOM코드1</th>
-						    	<th>제품코드1</th>
-						    	<th>된장찌개</th>
-						    	<th>2인</th>
-						    	<th>1000</th>
-						    	<th>원자재</th>
-						    	<th>재료코드1</th>
-						    	<th>양파</th>
-						    	<th>kg</th>
-						    	<th>10</th>
+						    	<th><%= list.getList_seq() %></th>
+						    	<th><%= list.getBom_id() %></th>
+						    	<th><%= list.getProduct_id() %></th>
+						    	<th><%= list.getProduct_nm() %></th>
+						    	<th><%= list.getProduct_div() %></th>
+						    	<th><%= list.getProduct_spec() %></th>
+						    	<th><%= list.getLot_size() %></th>
+						    	<th><%= list.getMaterial_classification() %></th>
+						    	<th><%= list.getMaterial_id() %></th>
+						    	<th><%= list.getMaterial_nm() %></th>
+						    	<th><%= list.getQuantity_units() %></th>
+						    	<th><%= list.getBom_prod_quantity() %></th>
 						    	<th>
 						    		<!-- ★★★ #에 수정 메소드 링크할 것 -->
 										<a href="#">
@@ -214,6 +222,9 @@
 						    	</th>
 						    </tr>
 						  </tbody>
+<%
+	}
+%>
 						</table>
 					</div>
 					

@@ -75,6 +75,10 @@ body {
 	/* background-color: green; */
 }
 
+.BOM_list .list_box th {
+	text-align: center;
+}
+
 .BOM_list .bom_delete {
 	/* background-color: yellow; */
 	margin: 1% 0;

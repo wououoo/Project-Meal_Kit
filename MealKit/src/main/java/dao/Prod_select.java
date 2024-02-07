@@ -41,7 +41,7 @@ public class Prod_select {
 	    List<String> list = new ArrayList<>();
 		try {
 			/* sql = "SELECT DISTINCT product_nm FROM Finished_Product"; */
-			sql = "SELECT DISTINCT product_nm FROM Finished_Product ORDER BY product_name";
+			sql = "SELECT DISTINCT product_nm FROM Finished_Product ORDER BY product_nm";
 			
 			conn = DBManager.getConnection();		// DB 연결
 			System.out.println("오라클 접속 성공");
@@ -50,7 +50,7 @@ public class Prod_select {
 			rs = pstmt.executeQuery(sql);		// 쿼리문 결과 처리
 			
 			while(rs.next()) {
-				product_nm = rs.getString("product_name");
+				product_nm = rs.getString("product_nm");
 				list.add(product_nm);		// List에 조회된 prod_nm을 넣어줌
 
 				/* System.out.println(product_nm); */
@@ -77,7 +77,7 @@ public class Prod_select {
 		
 	    List<String> list = new ArrayList<>();
 		try {
-			sql = "SELECT DISTINCT product_div FROM Finished_Product ORDER BY division";
+			sql = "SELECT DISTINCT product_div FROM Finished_Product ORDER BY product_div";
 			
 			conn = DBManager.getConnection();		// DB 연결
 			System.out.println("오라클 접속 성공");
@@ -86,7 +86,7 @@ public class Prod_select {
 			rs = pstmt.executeQuery(sql);		// 쿼리문 결과 처리
 			
 			while(rs.next()) {
-				prod_div = rs.getString("division");
+				prod_div = rs.getString("product_div");
 				list.add(prod_div);		// List에 조회된 prod_div을 넣어줌
 
 				/* System.out.println(prod_div); */
@@ -106,8 +106,8 @@ public class Prod_select {
 				prod_nm, 
 				prod_quantity, 
 				prod_price,
-				prod_spec, 
-				storage_location = null;
+				prod_div,
+				prod_spec = null;
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -117,7 +117,7 @@ public class Prod_select {
 		FinishedProductVo pVo = null;
 		
 		try {
-			sql = "SELECT product_id, product_nm, product_div, product_spec, product_quantity, product_price FROM Finished_Product ORDER BY product_name";
+			sql = "SELECT product_id, product_nm, product_div, product_spec, product_quantity, product_price FROM Finished_Product ORDER BY product_nm";
 			
 			conn = DBManager.getConnection();		// DB 연결
 			System.out.println("오라클 접속 성공");
@@ -128,19 +128,19 @@ public class Prod_select {
 			while(rs.next()) {
 				pVo = new FinishedProductVo();
 				prod_id = Integer.toString(rs.getInt("product_id"));
-				prod_nm = rs.getString("product_name");
+				prod_nm = rs.getString("product_nm");
 				prod_quantity = Integer.toString(rs.getInt("product_quantity"));
 				prod_price = Integer.toString(rs.getInt("product_price"));
-				prod_spec = rs.getString("division");
-				storage_location = rs.getString("storage_location");
+				prod_div = rs.getString("product_div");
+				prod_spec = rs.getString("product_spec");
 				
 				// List에 조회된 컬럼을 넣어줌
 				list.add(prod_id);		
 				list.add(prod_nm);
 				list.add(prod_quantity);
 				list.add(prod_price);
+				list.add(prod_div);
 				list.add(prod_spec);
-				list.add(storage_location);
 				
 			}
 		} catch (Exception e) {
