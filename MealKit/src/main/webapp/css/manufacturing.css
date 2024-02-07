@@ -84,7 +84,7 @@ body {
 	position: relative;
 	border-collapse: collapse;
 	border: 1px solid black;
-	width: 500px;
+	width: 533px;
 }
 
 .fin_prod th, .fin_prod td {
@@ -105,6 +105,10 @@ body {
 	width: 100%;
 	margin: 0;
 	height: 187px;
+}
+
+.fin_prod .prod-container .material {
+	width: 550px;
 }
 
 .fin_prod .prod-container .material .mate_table {
