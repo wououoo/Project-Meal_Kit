@@ -11,8 +11,7 @@
 <div class="container">
   <!-- Header -->
   <h1>Log in</h1>
-  
-  <form class="login"  action="loginpro.jsp" method="GET">
+  <form class="login"  action="loginpro.jsp" method="post">
   	<span>ID</span>
   	<input type = "text" id="Id" name ="empId" placeholder="id" required>
   	<span>Password</span>
@@ -25,7 +24,6 @@
   	</p>
   	<button type="submit">Log in</button>
   </form>
-  
   
   
  </div>
