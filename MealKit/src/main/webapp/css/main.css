@@ -2,6 +2,7 @@
 
 body {
   font-family: 'Nanum Gothic', sans-serif;
+  height: 3000px;
 }
 
 .material-symbols-outlined {
@@ -24,6 +25,8 @@ header {
   background-color: #f9f5f0;
   border-bottom: 1px solid #D8BCB1;
   top: 0px;
+  position: fixed;
+  width: 100%;
   z-index: 5;
 }
 
