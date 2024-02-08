@@ -153,7 +153,7 @@
                     	<a href="./salesOrder_main.jsp">주문서 메인</a>
                     </li>
                     <li>
-                    	<a href="./salesOrder_insert.jsp">주문서 작성</a>
+                    	<a href="./salesOrder_insertForm.jsp">주문서 작성</a>
                     </li>
                   </ul>
                 </li>
@@ -164,7 +164,7 @@
                     	<a href="./salesOrder_select.jsp">조회화면</a>
                     </li>
                     <li>
-                    	<a href="./salesOrder_update.jsp">주문서 수정</a>
+                    	<a href="./salesOrder_updateForm.jsp">주문서 수정</a>
                     </li>
                   </ul>
                 </li>
