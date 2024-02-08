@@ -15,7 +15,7 @@
 <%
 	request.setCharacterEncoding("utf-8");
 	
-	System.out.println("str");
+/* 	System.out.println("str"); */
 
 	String order_num = request.getParameter("ORDER_NUM");
 	String cust_id = request.getParameter("CUST_ID");
