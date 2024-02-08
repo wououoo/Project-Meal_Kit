@@ -46,7 +46,7 @@
 	.responsible th{border-collapse:collapse; border: 1px solid #fff;}
 	.order th{border-collapse:collapse; border: 1px solid #fff; box-sizing: border-box; width:130px}
 	.order td{width:130px; }
-
+	.memo{margin:60px; font-size:14px; color: #966; font-weight:800}
 </style>
 
 <title>Sales order insert form</title>
@@ -158,6 +158,7 @@
 		  </tbody>			
 		</table>	
 	</form>
+	<h6 class="memo">※ 담장자 정보를 반드시 기재하여 주십시오</h6>
 </div>
 </section>
 

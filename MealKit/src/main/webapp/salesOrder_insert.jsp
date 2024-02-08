@@ -15,7 +15,7 @@
 <%
 	request.setCharacterEncoding("utf-8");
 	
-/* System.out.println("str"); */
+/* System.out.println("OK"); */
 
 	String order_num = request.getParameter("ORDER_NUM");
 	String cust_id = request.getParameter("CUST_ID");
@@ -65,8 +65,10 @@
 		}
 	}
 %>
-<script> alert("입력이 완료되었습니다")</script>
+<script> alert("입력이 완료되었습니다");
+		location.href = '<%= request.getContextPath() %>/salesOrder_select.jsp';
+</script>
 
-<a href="salesOrder_select.jsp">확인하기</a>
+<!-- <a href="salesOrder_select.jsp">확인하기</a> -->
 </body>
 </html>
