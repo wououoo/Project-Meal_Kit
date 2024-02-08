@@ -52,13 +52,10 @@
             <div class="contents__menu">
               <ul class="inner">
                 <li>
-                  <h4>재고현황 메뉴1</h4>
+                  <h4>재고 현황</h4>
                   <ul>
                     <li>
-                    	<a href="./test.jsp">서브메뉴1</a>
-                    </li>
-                    <li>
-                    	<a href="./test.jsp">서브메뉴2</a>
+                    	<a href="./inventoryStatus.jsp">재고 현황</a>
                     </li>
                   </ul>
                 </li>
@@ -149,10 +146,10 @@
                   <h4>제조관리 메뉴2</h4>
                   <ul>
                     <li>
-                    	<a href="./test.jsp">서브메뉴1</a>
+                    	<a href="./instruction.jsp">제조 지시</a>
                     </li>
                     <li>
-                    	<a href="./test.jsp">서브메뉴2</a>
+                    	<a href="./manufacturing.jsp">제조 수행</a>
                     </li>
                   </ul>
                 </li>
