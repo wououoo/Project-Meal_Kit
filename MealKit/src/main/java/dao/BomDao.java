@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import dto.BomListVo;
 import utils.DBManager;
 
@@ -29,12 +31,15 @@ public class BomDao {
 		// 실행 내용
 		/* BOM_list(); */
 		BomDao bDao = new BomDao();
-		bDao.selectBomAll();
-
 	}
 	
-	// 모든 BOM 목록을 조회하는 함수
-	public List<BomListVo> selectBomAll() {
+	// 검색한 BOM 목록을 조회하는 함수
+	public List<BomListVo> readBomList(HttpServletRequest request) {
+		// BOM_list.jsp에서 넘어온 값들
+		String searchProdNm = request.getParameter("search-ProdNm");
+		String searchProdDiv = request.getParameter("search-prodDiv");
+		String searchMatNm = request.getParameter("search-matNm");
+		
 		String sql = null;
 		
 		// 커넥션 생성
@@ -53,8 +58,19 @@ public class BomDao {
 					+ "	FROM BOM b, FINISHED_PRODUCT fp, MATERIAL m, INSTRUCTION i"
 					+ "	WHERE b.PRODUCT_ID = fp.PRODUCT_ID "
 					+ "		AND b.MATERIAL_ID = m.MATERIAL_ID"
-					+ "		AND b.LOT_ID = i.LOT_ID"
-					+ "	ORDER BY b.BOM_ID, b.PRODUCT_ID, m.MATERIAL_CLASSIFICATION";
+					+ "		AND b.LOT_ID = i.LOT_ID ";
+			
+			// 검색목록 선택을 했다면, sql문에 추가해줄 것
+			if(searchProdNm != null && searchProdNm != "") {
+				sql += "AND fp.PRODUCT_NM LIKE '%" + searchProdNm + "%'";
+			}
+			if(searchProdDiv != null && searchProdDiv != "") {
+				sql += "AND fp.PRODUCT_DIV LIKE '%" + searchProdDiv + "%'";
+			}
+			if(searchMatNm != null && searchMatNm != "") {
+				sql += "AND m.MATERIAL_NM  LIKE '%" + searchMatNm + "%'";
+			} 
+			sql += "ORDER BY b.BOM_ID, b.PRODUCT_ID, m.MATERIAL_CLASSIFICATION";
 			
 			conn = DBManager.getConnection();
 			System.out.println("오라클 접속 성공");
@@ -99,8 +115,35 @@ public class BomDao {
 		
 		DBManager.close(conn, pstmt, rs); // DB 닫기
 		return list;
-		
-		
 	}
+	
+	
+	// checkbox 선택 후, 삭제 버튼 click => 해당 bom_id=?, material_id=?의 데이터 삭제
+	/*
+	 * public List<BomListVo> deleteBomList(HttpServletRequest request) { //
+	 * BOM_list.jsp에서 넘어온 값들 // ★★★ 넘어오는 값을 수정할 것 String checkBomId =
+	 * request.getParameter(""); String checkMatId = request.getParameter("");
+	 * 
+	 * String sql = null;
+	 * 
+	 * // 커넥션 생성 Connection conn = null; PreparedStatement pstmt = null;
+	 * 
+	 * // 인터페이스 구현 객체 생성 List<BomListVo> list = new ArrayList<>();
+	 * 
+	 * try { sql = "DELETE * FROM BOM b " + "	WHERE bom_id = " + checkBomId +
+	 * "	AND b.material_id = " + checkMatId;
+	 * 
+	 * conn = DBManager.getConnection(); System.out.println("오라클 접속 성공");
+	 * 
+	 * pstmt = conn.prepareStatement(sql); // 쿼리문 실행 pstmt.executeUpdate(); // 쿼리문
+	 * 결과 처리
+	 * 
+	 * // BomList 삭제 성공할 경우, alert("성공적으로 삭제되었습니다."); 보여준 후, // 적용된 BomList 현황 조회하는
+	 * 화면으로 넘어갈 것.
+	 * 
+	 * } catch (Exception e) { System.out.println("오라클 접속 오류: " + e); }
+	 * 
+	 * DBManager.close(conn, pstmt); return list; }
+	 */
 
 }

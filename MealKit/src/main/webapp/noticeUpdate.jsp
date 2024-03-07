@@ -19,7 +19,7 @@
     Connection conn = null; //디비 접속 성공시 접속 정보 저장
 	PreparedStatement pstmt = null; // 쿼리 실행문
 	Exception exception = null;
-	String savePath = "D:\\java_web_sol\\workspace_stsb\\starbucks-notice\\src\\main\\webapp\\upload-files";	
+	String savePath = "D:\\github-dh\\Project-Meal_Kit\\MealKit\\src\\main\\webapp\\upload-files";
 	
   try {
 	    MultipartRequest multi = new MultipartRequest(
