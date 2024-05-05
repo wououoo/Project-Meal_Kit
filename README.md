@@ -47,9 +47,10 @@
 ## 📕 주요기능
 밀키트를 생산/제조하는 업체에서 자원관리를 위해 사용하는 프로그램을 제공한다.
 <details>
-  <summary><b>1. 로그인 & 접근제한</b> (👈 Click)</summary>
+  <summary><b>1. 로그인 & 접근제한 [조다혜]</b> (👈 Click)</summary>
   <br>
   <div markdown="1">
+     <h3>로그인 & 접근제한</h3>
     <ul>
       <li>직원 번호가 데이터에 있으면 로그인이 가능하다.</li>
       <li>부서별 접근 가능한 페이지가 다르다.
@@ -69,9 +70,10 @@
 </details>
 
 <details>
-  <summary><b>2. 마이페이지</b> (👈 Click)</summary>
+  <summary><b>2. 마이페이지 [조다혜]</b> (👈 Click)</summary>
    <br>
   <div markdown="1">
+     <h3>마이페이지</h3>
     <ul>
       <li>'직원이름'과 '직원아이디'는 수정할 수 없다.</li>
       <li>'비밀번호', '전화번호'는 수정할 수 있다.
@@ -87,9 +89,10 @@
 </details>
 
 <details>
-  <summary><b>3. 공지사항</b> (👈 Click)</summary>
+  <summary><b>3. 공지사항 [조다혜]</b> (👈 Click)</summary>
    <br>
-  <div>
+  <div markdown="1">
+     <h3>공지사항</h3>
     <ul>
       <li>'공지사항'에서 제목을 검색할 수 있다.</li>
       <li>title을 누르면 해당 글을 수정할 수 있다.</li>
@@ -99,26 +102,54 @@
 </details>
 
 <details>
-  <summary><b>4. 사원관리</b> (👈 Click)</summary>
+  <summary><b>4. 사원관리 [진재원]</b> (👈 Click)</summary>
    <br>
   <div markdown="1">
-    
+     <h3>사원관리</h3>
+    <ul>
+       <li>신입 사원을 위한 정보를 입력한 후, [완료] 버튼을 누르면 사원 테이블에 DB가 추가된다.</li>
+       <li>모든 입력란을 입력해야 [완료] 버튼이 활성화된다.</li>
+       <li>사원번호는 사원 테이블의 시퀀스로 입력된다.</li>
+       <li>비밀번호는 1234 고정이다.</li>
+       <li>부서명은 부서번호 입력 시 그에 알맞는 부서명으로 입력된다.</li>
+       <img src="https://github.com/heyJSH/Project-Meal_Kit_SpringBoot/assets/150403977/ca2f1df1-71f8-42cc-b36d-cb7ed9132dbd" alt="사원관리1">
+       <br>
+       <li>없는 부서의 번호를 입력하면 경고가 뜬다.</li>
+       <img src="https://github.com/heyJSH/Project-Meal_Kit_SpringBoot/assets/150403977/694d2e71-3329-4aea-a470-a015fd9b9ab1" alt="사원관리2">
+       <img src="https://github.com/heyJSH/Project-Meal_Kit_SpringBoot/assets/150403977/4c1deb96-689f-4bf5-aac0-f172b58198e9" alt="사원관리3">
+       <br>
+    </ul>
   </div>
 </details>
 
 <details>
-  <summary><b>5. 재고현황</b> (👈 Click)</summary>
+  <summary><b>5. 구매관리 [우경주]</b> (👈 Click)</summary>
    <br>
   <div markdown="1">
-    
+     <h3>구매관리 - 재고현황</h3>
+    <ul>
+       <li>완제품과 재료의 현황을 출력한다.</li>
+       <img src="https://github.com/heyJSH/Project-Meal_Kit_SpringBoot/assets/150403977/7f50345e-bfb0-4a0b-af07-8a65cbf0c7da" alt="재고현황1">
+       <br>
+       <li>원자재 재고에서 [삭제] 버튼을 누르면 경고 후, [확인] 버튼을 누르면 삭제된다.</li>
+       <img src="https://github.com/heyJSH/Project-Meal_Kit_SpringBoot/assets/150403977/3fbe538d-5d0e-486c-9116-8e0a84d987bc" alt="재고현황2">
+       <br>
+       <li>원자재 재고에서 [추가] 버튼을 누르면 모달창이 뜨고, 데이터를 입력 후, [추가] 버튼을 누르면 DB에 저장된다.</li>
+       <img src="https://github.com/heyJSH/Project-Meal_Kit_SpringBoot/assets/150403977/96deeeeb-525a-4c49-b1d8-325cd2bcc5f1" alt="재고현황3">
+       <br>
+       <li>원자재 재고에서 [재료정보 수정] 버튼을 누르면 모달창이 뜨고, 원자재를 선택하면 해당 내용의 데이터가 출력된다.</li>
+       <li>데이터를 수정한 후, [수정] 버튼을 누르면 수정된 데이터가 DB에 저장된다.</li>
+       <img src="https://github.com/heyJSH/Project-Meal_Kit_SpringBoot/assets/150403977/7357edd3-c893-4240-80a9-13f89625b82a" alt="재고현황4">
+       <br>
+    </ul>
   </div>
 </details>
 
 <details>
-  <summary><b>6. 제조관리 - BOM 관리</b> (👈 Click)</summary>
+  <summary><b>6. 제조관리 - BOM 관리 [정수하]</b> (👈 Click)</summary>
    <br>
   <div markdown="1">
-     <h3>BOM 현황</h3>
+     <h3>제조관리 - BOM 현황</h3>
     <ul>
        <li>
           <b>BOM 현황에서 [BOM 검색 및 조회], [BOM 수정], [BOM 삭제]를 할 수 있다.</b>
@@ -146,22 +177,114 @@
           <img src="https://github.com/heyJSH/Project-Meal_Kit_SpringBoot/assets/150403977/cbb799ab-51d8-4c3b-8092-e90e217d2a01" alt="BOM 삭제">
        </ol>
     </ul>
+     <h3>제조관리 - BOM 등록</h3>
+     <ul>
+        <li>
+           <b>Step 1. 제품 등록</b>
+        </li>
+        <ol>
+           <li>빈 값이나, 형식에 맞지 않으면 alert()로 안내한다.</li>
+           <img src="https://github.com/heyJSH/Project-Meal_Kit_SpringBoot/assets/150403977/fdc7c8da-a9f3-489e-83fe-25e30b182e9f" alt="BOM 제품등록">
+        </ol>
+        <li>
+           <b>Step 2. 재료 등록</b>
+        </li>
+        <ol>
+           <li>1단계에서 등록한 [제품 정보]를 조회하면서 재료를 등록할 수 있다.</li>
+           <img src="https://github.com/heyJSH/Project-Meal_Kit_SpringBoot/assets/150403977/5601411d-bddc-4e61-aa92-3620c335cb8a" alt="BOM 재료등록1">
+           <br>
+           <li>[재료 추가] 버튼을 누르면 모달 창이 뜨고, [확인] 버튼을 누르면 등록한 목록을 볼 수 있다.</li>
+           <img src="https://github.com/heyJSH/Project-Meal_Kit_SpringBoot/assets/150403977/6087617e-31d7-476e-bd26-ac6ce8448463" alt="BOM 재료등록2">
+           <br>
+           <li>'ea'로 입력하면 'EA'로 자동 변환하고, 'g'로 입력하면 'kg'로 자동 변환한다.</li>
+           <img src="https://github.com/heyJSH/Project-Meal_Kit_SpringBoot/assets/150403977/c642d9a6-6f1e-47e4-9245-9b1aefe434c7" alt="BOM 재료등록3">
+           <br>
+           <li>재료를 중복으로 추가하지 않도록 방지한다.</li>
+           <img src="https://github.com/heyJSH/Project-Meal_Kit_SpringBoot/assets/150403977/5b1d7fdc-fde3-456f-a9e0-bd6ea4007429" alt="BOM 재료등록4">
+           <br>
+        </ol>
+        <li><b>Step 3. 공급 업체 등록</b></li>
+        <ol>
+           <li>2단계에서 등록한 [재료 정보]를 조회하면서 공급 업체를 등록할 수 있다.</li>
+           <img src="https://github.com/heyJSH/Project-Meal_Kit_SpringBoot/assets/150403977/545e5367-9c1c-40a2-a430-8624df5dec01" alt="공급업체 등록">
+        </ol>
+        <li><b>Step 4. 등록 확인</b></li>
+        <ol>
+           <li>최종적으로 BOM 등록을 할 것인지 선택한 후, [Submit] 버튼을 누르면 등록이 된다.</li>
+           <img src="https://github.com/heyJSH/Project-Meal_Kit_SpringBoot/assets/150403977/8498bf76-8e8e-4082-bfc3-fc6c2487e326" alt="등록 확인">
+        </ol>
+     </ul>
   </div>
 </details>
 
 <details>
-  <summary><b>7. 제조관리 - 제조지시 및 제조수행</b> (👈 Click)</summary>
+  <summary><b>7. 제조관리 - 제조지시 및 제조수행 [진재원]</b> (👈 Click)</summary>
    <br>
   <div markdown="1">
-    
+    <h3>제조관리 - 제조지시 및 제조수행</h3>
+     <ul>
+        <li><b>제조지시</b></li>
+        <ol>
+           <li>제조 지시서를 위한 정보를 입력하고 [제출] 버튼을 누르면 저장된다.</li>
+           <li>모든 입력란을 입력해야 [제출] 버튼이 활성화된다.</li>
+           <li>제출을 하면 지시 테이블과 수행 테이블에 추가되어 갱신된 지시 테이블의 표를 출력한다.</li>
+           <img src="https://github.com/heyJSH/Project-Meal_Kit_SpringBoot/assets/150403977/aca8db24-1aa6-4fa0-8a60-9359fd9f8d67" alt="제조지시1">
+           <br>
+           <li>판매중인 상품의 현황을 출력한다.</li>
+           <li>지시서 작성을 위한 제품번호를 표시한다.</li>
+           <li>지시를 수행하면 수량이 증가한다.</li>
+           <img src="https://github.com/heyJSH/Project-Meal_Kit_SpringBoot/assets/150403977/391bd9e9-0d68-46a9-99ed-9fd5c0d68df7" alt="제조지시2">
+           <br>
+           <li>직원 테이블에 존재하지 않는 지시자 ID를 입력하면 경고가 뜬다.</li>
+           <img src="https://github.com/heyJSH/Project-Meal_Kit_SpringBoot/assets/150403977/e4d95189-5141-4d02-9487-f06dfe860e4d" alt="제조지시3">
+           <br>
+           <li>완제품 테이블에 존재하지 않는 제품번호를 입력하면 경고가 뜬다.</li>
+           <img src="https://github.com/heyJSH/Project-Meal_Kit_SpringBoot/assets/150403977/71345bc3-7972-4096-a779-b7b68199f12a" alt="제조지시4">
+           <br>
+           <li>천 단위가 아닌 Lot Size를 입력하면 경고가 뜬다.</li>
+           <img src="https://github.com/heyJSH/Project-Meal_Kit_SpringBoot/assets/150403977/75c109be-fe0d-468d-b819-257be1e87b9c" alt="제조지시5">
+           <br>
+           <li>당일보다 전 날을 지시일로 입력하면 경고가 뜬다.</li>
+           <img src="https://github.com/heyJSH/Project-Meal_Kit_SpringBoot/assets/150403977/6b1bbcfb-779f-482b-8c42-4e22353ac34f" alt="제조지시6">
+           <br>
+        </ol>
+     </ul>
+     <ul>
+        <li><b>제조수행</b></li>
+        <ol>
+           <li>수행한 정보를 제조 수행서에 입력하여 [완료] 버튼을 누르면 저장된다.</li>
+           <li>모든 입력란을 입력해야 [완료] 버튼이 활성화된다.</li>
+           <li>수행을 완료하면 수행 테이블에서 제거되어 갱신된 표를 출력하고 지시 테이블을 업데이트한다.</li>
+           <img src="https://github.com/heyJSH/Project-Meal_Kit_SpringBoot/assets/150403977/c7b55100-4697-4f01-a697-c45fe648f6ed" alt="제조수행1">
+           <br>
+           <li>판매중인 상품의 현황을 출력한다.</li>
+           <li>지시를 수행하면 완제품의 수량이 증가한다.</li>
+           <li>새로고침 하지 않아도 바로 적용된다.</li>
+           <li>[더보기]를 눌러 BOM에 필요한 재료들을 옆에 출력한다.</li>
+           <img src="https://github.com/heyJSH/Project-Meal_Kit_SpringBoot/assets/150403977/cc9c3ae2-2830-4729-a5f1-eb4ab967714d" alt="제조수행2">
+           <br>
+           <li>상품을 만들기 위한 재료의 현황과 기본 표준량과 비교하여, 제조가능여부를 판별한다.<br>이 때, 제조가능여부가 가능이어도 LOT Size에 따라 불가능할 수도 있다.</li>
+           <li>지시를 수행하면 재료의 수량이 감소한다.</li>
+           <li>새로고침 하지 않아도 바로 적용된다.</li>
+           <img src="https://github.com/heyJSH/Project-Meal_Kit_SpringBoot/assets/150403977/90330601-5bd9-4bb0-a911-9ec8ad1fee8b" alt="제조수행3">
+        </ol>
+     </ul>
   </div>
 </details>
 
 <details>
-  <summary><b>8. 판매관리</b> (👈 Click)</summary>
+  <summary><b>8. 판매관리 [김영범]</b> (👈 Click)</summary>
    <br>
   <div markdown="1">
-    
+    <h3>판매관리</h3>
+     <ul>
+        <li><b>판매관리 화면</b></li>
+        <ol>
+           <li>고객으로부터 받은 주문 내용을 입력하여 DB에 저장하고 조회, 수정, 삭제를 할 수 있는 기본적인 기능에 충실하여 개발했다.</li>
+           <li>Sales Order Main 화면에서 입력, 수정, 조회 화면으로 링크되어 변경사항은 DB에 직접 반영된다.</li>
+           <img src="https://github.com/heyJSH/Project-Meal_Kit_SpringBoot/assets/150403977/54c35835-e645-45ba-b6ce-f2268e4ec157" alt="판매관리">
+        </ol>
+     </ul>
   </div>
 </details>
 <br><br>
@@ -176,6 +299,22 @@ DB와 ERD <br>
 <br><br>
 
 ## ⚠️ 트러블 슈팅
+<details>
+   <summary>트러블슈팅</b> (👈 Click)</summary>
+   <br>
+   <div markdown="1">
+      <h3>문제점</h3>
+      <b>부서 접근 제한 로직의 오류</b>
+      <ul>
+         <li>페이지에서는 세션에 저장된 depNm 값을 확인하여 특정 부서("관리부")만 접근 가능하도록 제한하는 로직이 있음에도 불구하고, 코드상에서 오류가 발생할 수 있는 부분이 존재한다.</li>
+      </ul>
+      <br>
+      <h3>해결방안</h3>
+      <b>예외 처리를 추가</b>
+      <b>equalsIgnoreCase 메소드를 사용해 대소문자 오류 제거</b>
+       <img src="https://github.com/jihyeon00/CNR_FURNITURE/assets/151722511/b027ee4b-cf63-487f-932a-363abac83f18" >
+   </div>
+</details>
 <br><br>
 
 ## 📽️ 작동 영상
