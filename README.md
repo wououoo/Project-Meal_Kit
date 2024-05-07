@@ -8,8 +8,7 @@
 2. [📕 주요기능](#주요기능)
 3. [🔧 아키텍처](#아키텍처)
 4. [🏗️ ERD](#erd)
-5. [⚠️ 트러블 슈팅](#트러블-슈팅)
-6. [📽️ 작동 영상](#작동-영상)
+5. [📽️ 작동 영상](#작동-영상)
    <br><br>
 
 ## 🖥️ 프로젝트 개요
@@ -305,25 +304,6 @@
 ## 🏗️ ERD
 DB와 ERD <br>
 ![image](https://github.com/heyJSH/Project-Meal_Kit_SpringBoot/assets/150403977/bcbfa9be-686b-4970-81d5-977aa1d2e7b5)
-<br><br>
-
-## ⚠️ 트러블 슈팅
-<details>
-   <summary>트러블슈팅</b> (👈 Click)</summary>
-   <br>
-   <div markdown="1">
-      <h3>문제점</h3>
-      <b>부서 접근 제한 로직의 오류</b>
-      <ul>
-         <li>페이지에서는 세션에 저장된 depNm 값을 확인하여 특정 부서("관리부")만 접근 가능하도록 제한하는 로직이 있음에도 불구하고, 코드상에서 오류가 발생할 수 있는 부분이 존재한다.</li>
-      </ul>
-      <br>
-      <h3>해결방안</h3>
-      <b>예외 처리를 추가</b>
-      <b>equalsIgnoreCase 메소드를 사용해 대소문자 오류 제거</b>
-       <img src="https://github.com/jihyeon00/CNR_FURNITURE/assets/151722511/b027ee4b-cf63-487f-932a-363abac83f18" >
-   </div>
-</details>
 <br><br>
 
 ## 📽️ 작동 영상
