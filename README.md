@@ -297,7 +297,8 @@
 <br><br>
 
 ## 🔧 아키텍처
-![image](https://github.com/heyJSH/Project-Meal_Kit/assets/151722511/c95a5896-9d37-44d8-a89f-034644dfeea4)
+
+![image](https://github.com/wououoo/Project-Meal_Kit/assets/156730657/d9de9ba8-3adc-4ebb-bb95-fcb7c60fed44)
 <br><br>
 
 ## 🏗️ ERD
