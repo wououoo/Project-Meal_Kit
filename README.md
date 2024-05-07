@@ -129,13 +129,13 @@
      <h3>구매관리 - 재고현황</h3>
     <ul>
        <li>재료의 재고를 출력하고 이를 수정할 수 있는 페이지로 원자재 삭제, 추가 시 DB에 반영된다.</li>
-       <img src="https://github.com/wououoo/Project-Meal_Kit/assets/156730657/d2cca27d-46d4-4d82-ad8d-5770a17b1b25" alt="재고현황1">
+       <img src="https://github.com/wououoo/Project-Meal_Kit/assets/156730657/2fe552ac-66dd-4dbe-ae72-44fa7a9c246c" alt="재고현황1">
        <br>
         <li>업체 현황을 출력하고 이를 수정할 수 있는 페이지로 업체 수정 시 DB에 반영된다.</li>
-       <img src="https://github.com/wououoo/Project-Meal_Kit/assets/156730657/2d4fd42f-a7f9-485a-9a79-aa4f8bcf4114" alt="재고현황1">
+       <img src="https://github.com/wououoo/Project-Meal_Kit/assets/156730657/b2a8a3b5-b62a-4c39-acc0-17f0b481b5a7" alt="재고현황1">
        <br>
        <li>원자재를 계약할 수 있는 페이지로 계약 테이블에 DB를 추가할 수 있다.</li>
-       <img src="https://github.com/wououoo/Project-Meal_Kit/assets/156730657/57388c54-eae0-4288-be8f-19ad8faf02ea" alt="재고현황2">
+       <img src="https://github.com/wououoo/Project-Meal_Kit/assets/156730657/c0975ee0-6d43-4def-95e9-b44e5ccc7fef" alt="재고현황2">
        <br>
             <ol>
               <li>select 박스에서 계약하고자 하는 원자재를 선택한다</li>       
@@ -148,7 +148,7 @@
               <br>
            </ol>
        <li>계약한 현황을 출력하고, 구매확정 클릭 시 확정 날짜가 입력되며, 원자재 재고가 변동된다.</li>
-       <img src="https://github.com/wououoo/Project-Meal_Kit/assets/156730657/364e4f1c-5c1d-4665-bd7d-9bdd3ae85078" alt="재고현황3">
+       <img src="https://github.com/wououoo/Project-Meal_Kit/assets/156730657/ea51855e-9287-4121-a70f-a364553467e7" alt="재고현황3">
        <br>
     </ul>
   </div>
