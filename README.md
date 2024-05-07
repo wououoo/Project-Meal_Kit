@@ -128,18 +128,27 @@
   <div markdown="1">
      <h3>구매관리 - 재고현황</h3>
     <ul>
-       <li>완제품과 재료의 현황을 출력한다.</li>
+       <li>재료의 재고를 출력하고 이를 수정할 수 있는 페이지로 원자재 삭제, 추가 시 DB에 반영된다.</li>
        <img src="https://github.com/wououoo/Project-Meal_Kit/assets/156730657/d2cca27d-46d4-4d82-ad8d-5770a17b1b25" alt="재고현황1">
        <br>
-       <li>원자재 재고에서 [삭제] 버튼을 누르면 경고 후, [확인] 버튼을 누르면 삭제된다.</li>
-       <img src="https://github.com/heyJSH/Project-Meal_Kit_SpringBoot/assets/150403977/3fbe538d-5d0e-486c-9116-8e0a84d987bc" alt="재고현황2">
+        <li>업체 현황을 출력하고 이를 수정할 수 있는 페이지로 업체 수정 시 DB에 반영된다.</li>
+       <img src="https://github.com/wououoo/Project-Meal_Kit/assets/156730657/2d4fd42f-a7f9-485a-9a79-aa4f8bcf4114" alt="재고현황1">
        <br>
-       <li>원자재 재고에서 [추가] 버튼을 누르면 모달창이 뜨고, 데이터를 입력 후, [추가] 버튼을 누르면 DB에 저장된다.</li>
-       <img src="https://github.com/heyJSH/Project-Meal_Kit_SpringBoot/assets/150403977/96deeeeb-525a-4c49-b1d8-325cd2bcc5f1" alt="재고현황3">
+       <li>원자재를 계약할 수 있는 페이지로 계약 테이블에 DB를 추가할 수 있다.</li>
+       <img src="https://github.com/wououoo/Project-Meal_Kit/assets/156730657/57388c54-eae0-4288-be8f-19ad8faf02ea" alt="재고현황2">
        <br>
-       <li>원자재 재고에서 [재료정보 수정] 버튼을 누르면 모달창이 뜨고, 원자재를 선택하면 해당 내용의 데이터가 출력된다.</li>
-       <li>데이터를 수정한 후, [수정] 버튼을 누르면 수정된 데이터가 DB에 저장된다.</li>
-       <img src="https://github.com/heyJSH/Project-Meal_Kit_SpringBoot/assets/150403977/7357edd3-c893-4240-80a9-13f89625b82a" alt="재고현황4">
+            <ol>
+              <li>select 박스에서 계약하고자 하는 원자재를 선택한다</li>       
+              <br>
+              <li>두번째 select 박스에서 선택한 원자재만을 파는 업체들이 나오며, 그 중 선택한다</li>
+              <br>
+              <li>업체를 선택하면 업체 정보가 왼쪽아래 표시된다.</li>
+              <br>
+              <li>계약할 수량을 입력하고 구입버튼을 클릭한다.</li>
+              <br>
+           </ol>
+       <li>계약한 현황을 출력하고, 구매확정 클릭 시 확정 날짜가 입력되며, 원자재 재고가 변동된다.</li>
+       <img src="https://github.com/wououoo/Project-Meal_Kit/assets/156730657/364e4f1c-5c1d-4665-bd7d-9bdd3ae85078" alt="재고현황3">
        <br>
     </ul>
   </div>
