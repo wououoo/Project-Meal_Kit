@@ -129,7 +129,7 @@
      <h3>구매관리 - 재고현황</h3>
     <ul>
        <li>완제품과 재료의 현황을 출력한다.</li>
-       <img src="https://github.com/heyJSH/Project-Meal_Kit_SpringBoot/assets/150403977/7f50345e-bfb0-4a0b-af07-8a65cbf0c7da" alt="재고현황1">
+       <img src="https://github.com/wououoo/Project-Meal_Kit/assets/156730657/d2cca27d-46d4-4d82-ad8d-5770a17b1b25" alt="재고현황1">
        <br>
        <li>원자재 재고에서 [삭제] 버튼을 누르면 경고 후, [확인] 버튼을 누르면 삭제된다.</li>
        <img src="https://github.com/heyJSH/Project-Meal_Kit_SpringBoot/assets/150403977/3fbe538d-5d0e-486c-9116-8e0a84d987bc" alt="재고현황2">
